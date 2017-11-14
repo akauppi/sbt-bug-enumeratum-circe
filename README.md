@@ -1,4 +1,4 @@
-# enumeratum-circe update problem
+# sbt bug updating enumeratum-circe
 
 This repo tries to showcase an issue with updating [enumeratum-circe](https://github.com/lloydmeta/enumeratum#circe) in Scala.
 
@@ -10,11 +10,11 @@ Not affected:
 
 - `sbt` 0.13.16
 
+System used: macOS 10.13.1 with Homebrew
+
 ## Steps to replicate
 
-System: macOS 10.13.1 with Homebrew
-
-In `project/build.properties`:
+Clone this repo. In `project/build.properties`:
 
 ```
 sbt.version=1.0.3
@@ -140,5 +140,6 @@ WARNING: All illegal access operations will be denied in a future release
 - Downgrade `project/build.properties` temporarily to `0.13.16`, do an update, then place the `1.0.x` back. 
   Since the artefacts are loaded in a local Ivy2 repo (common to all sbt versions), they are now visible for `1.0.x` as well.
 
-- Adding this: `updateOptions := updateOptions.value.withGigahorse(false)` to `build.sbt` sometimes works, but mostly not. I wasn't able to figure out the logic.
-
+<!-- 
+- Adding `updateOptions := updateOptions.value.withGigahorse(false)` to `build.sbt` sometimes works, but mostly not. I wasn't able to figure out the logic.
+-->
